@@ -9,10 +9,15 @@ public class UserRequest {
     @JsonProperty("email")
     @NonNull
     private String email;
+
     @JsonProperty("password")
     @NonNull
     private String password;
+
     @JsonProperty("username")
     @NonNull
     private String username;
+
+    @JsonProperty("role")
+    private int role;
 }
