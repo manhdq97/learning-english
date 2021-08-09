@@ -34,10 +34,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User insertUser(UserRequest userRequest) {
+        int roleId = userRequest.getRole() != 0 ? userRequest.getRole() : 2;
         User user = User.builder()
                 .email(userRequest.getEmail())
                 .password(userRequest.getPassword())
                 .username(userRequest.getUsername())
+                .role(roleRepository.findById(roleId).orElseThrow(NotFoundException::new))
                 .createAt(LocalDateTime.now())
                 .build();
         return userRepository.save(user);
